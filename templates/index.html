@@ -11,10 +11,40 @@
 
 <body>
     <h1>Calculadora de expresiones aritméticas</h1>
-    <input id="expression" type="text" placeholder="Ingresa una expresión, ej: (3 + 4 * 2)" />
-    <button onclick="calculate()">Calcular</button>
-    <div id="tree">Árbol de derivación de la expresión aritmética</div>
+    <div class="container">
+        <div class="calculator-section">
+            <div class="display" id="expressionDisplay"></div>
+            <div class="calculator">
+                <button class="button" onclick="appendToExpression('7')">7</button>
+                <button class="button" onclick="appendToExpression('8')">8</button>
+                <button class="button" onclick="appendToExpression('9')">9</button>
+                <button class="button" onclick="appendToExpression('+')">+</button>
 
+                <button class="button" onclick="appendToExpression('4')">4</button>
+                <button class="button" onclick="appendToExpression('5')">5</button>
+                <button class="button" onclick="appendToExpression('6')">6</button>
+                <button class="button" onclick="appendToExpression('-')">-</button>
+
+                <button class="button" onclick="appendToExpression('1')">1</button>
+                <button class="button" onclick="appendToExpression('2')">2</button>
+                <button class="button" onclick="appendToExpression('3')">3</button>
+                <button class="button" onclick="appendToExpression('*')">*</button>
+
+                <button class="button" onclick="appendToExpression('0')">0</button>
+                <button class="button" onclick="appendToExpression('.')">.</button>
+                <button class="button" onclick="appendToExpression('/')">/</button>
+                <button class="button" onclick="appendToExpression('(')">(</button>
+                <button class="button" onclick="appendToExpression(')')">)</button>
+
+                <button class="button" onclick="deleteLast()">C</button>
+                <button class="button" onclick="clearExpression()">CE</button>
+                <button class="button" onclick="calculate()">=</button>
+            </div>
+        </div>
+        <div class="tree-section">
+            <div id="tree">Árbol de derivación</div>
+        </div>
+    </div>
     <script src="/static/script.js"></script>
 </body>
 

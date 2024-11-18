@@ -1,5 +1,30 @@
+let expression = "";
+
+function appendToExpression(value) {
+    expression += value;
+    updateDisplay();
+}
+
+function deleteLast() {
+    expression = expression.slice(0, -1);
+    updateDisplay();
+}
+
+function clearExpression() {
+    expression = "";
+    updateDisplay();
+    document.getElementById("tree").innerHTML = "";
+}
+
+function updateDisplay() {
+    document.getElementById("expressionDisplay").innerText = expression || "0";
+}
+
 async function calculate() {
-    const expression = document.getElementById("expression").value;
+    if (!expression) {
+        alert("Por favor, ingresa una expresión.");
+        return;
+    }
 
     const response = await fetch("http://127.0.0.1:5000/calculate", {
         method: "POST",
@@ -8,6 +33,7 @@ async function calculate() {
         },
         body: JSON.stringify({ expression }),
     });
+
     if (!response.ok) {
         console.error("Error en la solicitud:", response.statusText);
         return;
@@ -63,9 +89,7 @@ function renderTree(data) {
         .attr("class", "node")
         .attr("transform", d => "translate(" + d.y + "," + d.x + ")");
 
-    node.append("circle")
-        .attr("r", 10);
-
+    node.append("circle").attr("r", 10);
     node.append("text")
         .attr("dy", ".35em")
         .attr("x", d => d.children ? -13 : 13)
