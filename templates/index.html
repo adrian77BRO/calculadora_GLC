@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+
+<body>
+    <h1>Calculadora de expresiones aritméticas</h1>
+    <input id="expression" type="text" placeholder="Ingresa una expresión, ej: (3 + 4 * 2)" />
+    <button onclick="calculate()">Calcular</button>
+    <div id="tree">Árbol de derivación de la expresión aritmética</div>
+
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
