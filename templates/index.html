@@ -13,22 +13,25 @@
     <h1>Calculadora de expresiones aritméticas</h1>
     <div class="container">
         <div class="calculator-section">
-            <div class="display" id="expressionDisplay"></div>
+            <div class="display" id="result-value">0</div>
             <div class="calculator">
                 <button class="button" onclick="appendToExpression('7')">7</button>
                 <button class="button" onclick="appendToExpression('8')">8</button>
                 <button class="button" onclick="appendToExpression('9')">9</button>
                 <button class="button" onclick="appendToExpression('+')">+</button>
+                <button class="button" onclick="saveToMemory()">MS</button>
 
                 <button class="button" onclick="appendToExpression('4')">4</button>
                 <button class="button" onclick="appendToExpression('5')">5</button>
                 <button class="button" onclick="appendToExpression('6')">6</button>
                 <button class="button" onclick="appendToExpression('-')">-</button>
+                <button class="button" onclick="useMemory()">MU</button>
 
                 <button class="button" onclick="appendToExpression('1')">1</button>
                 <button class="button" onclick="appendToExpression('2')">2</button>
                 <button class="button" onclick="appendToExpression('3')">3</button>
                 <button class="button" onclick="appendToExpression('*')">*</button>
+                <button class="button" onclick="clearMemory()">MC</button>
 
                 <button class="button" onclick="appendToExpression('0')">0</button>
                 <button class="button" onclick="appendToExpression('.')">.</button>
@@ -39,6 +42,31 @@
                 <button class="button" onclick="deleteLast()">C</button>
                 <button class="button" onclick="clearExpression()">CE</button>
                 <button class="button" onclick="calculate()">=</button>
+            </div>
+            <div class="results-section">
+                <table border="1" id="tokensTable">
+                    <thead>
+                        <tr>
+                            <th>Token</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <table border="1" id="statsTable">
+                    <thead>
+                        <tr>
+                            <th>Números</th>
+                            <th>Operadores</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="numberCount">0</td>
+                            <td id="operatorCount">0</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="tree-section">

@@ -1,4 +1,5 @@
 let expression = "";
+let memory = 0;
 
 function appendToExpression(value) {
     expression += value;
@@ -17,7 +18,21 @@ function clearExpression() {
 }
 
 function updateDisplay() {
-    document.getElementById("expressionDisplay").innerText = expression || "0";
+    document.getElementById("result-value").innerText = expression || "0";
+}
+
+function saveToMemory() {
+    const result = parseFloat(document.getElementById("result-value").innerText);
+    memory = result;
+}
+
+function useMemory() {
+    expression += memory;
+    updateDisplay();
+}
+
+function clearMemory() {
+    memory = 0;
 }
 
 async function calculate() {
@@ -42,6 +57,20 @@ async function calculate() {
     console.log("Respuesta del servidor:", data);
     const treeData = buildD3Tree(data.tree);
     renderTree(treeData);
+
+    const result = eval(expression);
+    document.getElementById("result-value").innerText = result;
+
+    const tokensTable = document.getElementById("tokensTable").querySelector("tbody");
+    tokensTable.innerHTML = "";
+    data.tokens.forEach(token => {
+        const row = tokensTable.insertRow();
+        row.insertCell(0).innerText = token.type;
+        row.insertCell(1).innerText = token.value;
+    });
+
+    document.getElementById("numberCount").innerText = data.stats.numbers;
+    document.getElementById("operatorCount").innerText = data.stats.operators;
 }
 
 function buildD3Tree(node) {
